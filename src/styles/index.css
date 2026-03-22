@@ -1,0 +1,524 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Rajdhani:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CSS VARIABLES — GOLD & BLACK LUXURY THEME
+   ============================================ */
+:root {
+  --primary:       #D4AF37;
+  --primary-light: #FFD700;
+  --primary-dark:  #B8962E;
+  --dark:          #000000;
+  --dark-2:        #080808;
+  --dark-3:        #0A0A0A;
+  --glass-bg:      rgba(255, 215, 0, 0.04);
+  --glass-border:  rgba(212, 175, 55, 0.18);
+  --glass-glow:    rgba(212, 175, 55, 0.12);
+  --text-primary:  #FFFFFF;
+  --text-secondary:rgba(255, 255, 255, 0.65);
+  --text-muted:    rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================
+   BASE RESET & GLOBALS
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: #000000;
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+body.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37, #B8962E);
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(212,175,55,0.35);
+  color: #fff;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.font-heading  { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+.font-accent   { font-family: 'Rajdhani', sans-serif; letter-spacing: 0.1em; }
+
+/* ============================================
+   GLASSMORPHISM — GOLD EDITION
+   ============================================ */
+.glass {
+  background: rgba(255, 215, 0, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.glass-card {
+  background: rgba(12, 10, 5, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.glass-card:hover {
+  background: rgba(20, 16, 6, 0.85);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow:
+    0 8px 40px rgba(212, 175, 55, 0.08),
+    0 0 0 1px rgba(212,175,55,0.1),
+    inset 0 1px 0 rgba(255,215,0,0.08);
+  transform: translateY(-4px);
+}
+
+.glass-orange {
+  background: rgba(212, 175, 55, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* ============================================
+   GLOW EFFECTS — GOLD
+   ============================================ */
+.glow-orange {
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.3),
+    0 0 50px rgba(212, 175, 55, 0.15),
+    0 0 100px rgba(212, 175, 55, 0.06);
+}
+
+.glow-text {
+  text-shadow:
+    0 0 30px rgba(212, 175, 55, 0.5),
+    0 0 60px rgba(212, 175, 55, 0.25);
+}
+
+.glow-border {
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.15),
+    inset 0 0 20px rgba(212, 175, 55, 0.04);
+}
+
+/* ============================================
+   GRADIENT TEXT — GOLD
+   ============================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #B8962E 0%, #D4AF37 35%, #FFD700 60%, #D4AF37 80%, #B8962E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: goldShimmer 4s linear infinite;
+}
+
+@keyframes goldShimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.gradient-text-white {
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   CUSTOM CURSOR — GOLD
+   ============================================ */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #D4AF37;
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(212,175,55,0.8);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+}
+
+.cursor-ring.hover {
+  width: 56px;
+  height: 56px;
+  background: rgba(212, 175, 55, 0.06);
+  border-color: rgba(212, 175, 55, 0.7);
+}
+
+.cursor-ring.click {
+  width: 18px;
+  height: 18px;
+  background: rgba(212, 175, 55, 0.25);
+}
+
+/* ============================================
+   NOISE / TEXTURE OVERLAY
+   ============================================ */
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   SECTION LAYOUTS
+   ============================================ */
+.section-padding { padding: 6rem 0; }
+@media (max-width: 768px) { .section-padding { padding: 4rem 0; } }
+
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============================================
+   ANIMATED BACKGROUNDS — BLACK & GOLD
+   ============================================ */
+.mesh-gradient {
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(212, 175, 55, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(184, 150, 46, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(212, 175, 55, 0.04) 0%, transparent 55%),
+    #000000;
+}
+
+/* ============================================
+   MARQUEE STRIP
+   ============================================ */
+.marquee-wrapper { overflow: hidden; white-space: nowrap; }
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 25s linear infinite;
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================
+   SCROLL PROGRESS — GOLD
+   ============================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #B8962E, #D4AF37, #FFD700, #D4AF37);
+  background-size: 200% auto;
+  animation: goldShimmer 3s linear infinite;
+  z-index: 10000;
+  transform-origin: left;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+}
+
+/* ============================================
+   LOADER — GOLD
+   ============================================ */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* ============================================
+   PARTICLES
+   ============================================ */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #D4AF37, transparent);
+  opacity: 0.25;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============================================
+   BUTTONS — GOLD
+   ============================================ */
+.btn-primary {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8962E 50%, #D4AF37 100%);
+  background-size: 200% auto;
+  color: #000000;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.875rem 2.5rem;
+  border-radius: 2px;
+  border: none;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 24px rgba(212, 175, 55, 0.25);
+}
+
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 40px rgba(212, 175, 55, 0.35),
+    0 0 0 1px rgba(212, 175, 55, 0.3);
+  color: #000;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+.btn-primary:hover::before { left: 160%; }
+
+.btn-outline {
+  background: transparent;
+  color: #D4AF37;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.875rem 2.5rem;
+  border-radius: 2px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  border-color: #D4AF37;
+  background: rgba(212, 175, 55, 0.06);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.15), inset 0 0 24px rgba(212,175,55,0.04);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   THREE.JS / CANVAS
+   ============================================ */
+.three-canvas {
+  position: absolute !important;
+  inset: 0;
+  pointer-events: none;
+}
+.three-canvas canvas { width: 100% !important; height: 100% !important; }
+
+/* ============================================
+   INPUT STYLES — GOLD
+   ============================================ */
+.input-field {
+  background: rgba(255, 215, 0, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 2px;
+  color: white;
+  padding: 0.875rem 1.25rem;
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+.input-field::placeholder { color: rgba(255, 255, 255, 0.25); }
+.input-field:focus {
+  border-color: rgba(212, 175, 55, 0.6);
+  background: rgba(212, 175, 55, 0.05);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08), 0 0 20px rgba(212, 175, 55, 0.08);
+}
+
+/* ============================================
+   SECTION LABEL — GOLD
+   ============================================ */
+.section-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #D4AF37;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4AF37);
+}
+
+/* ============================================
+   STRIPE DIVIDER — GOLD
+   ============================================ */
+.stripe-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+}
+
+/* ============================================
+   STATS
+   ============================================ */
+.stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  line-height: 1;
+  background: linear-gradient(135deg, #B8962E, #D4AF37, #FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   HOVER REVEAL
+   ============================================ */
+.hover-reveal { overflow: hidden; position: relative; }
+.hover-reveal-content {
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-reveal:hover .hover-reveal-content { transform: translateY(0); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ============================================
+   PERFORMANCE
+   ============================================ */
+.will-change-transform { will-change: transform; }
+.gpu-accelerate { transform: translateZ(0); backface-visibility: hidden; }
+
+/* ============================================
+   CLIP TEXT / REVEAL
+   ============================================ */
+.clip-text-reveal { overflow: hidden; display: block; }
+
+/* ============================================
+   GOLD LUXURY CARD SHINE
+   ============================================ */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.05) 0%,
+    transparent 50%,
+    rgba(212, 175, 55, 0.02) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   GOLD GRID PATTERN
+   ============================================ */
+.gold-grid {
+  background-image:
+    linear-gradient(rgba(212,175,55,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,175,55,0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* ============================================
+   GOLD PULSE GLOW KEYFRAME (for inline styles)
+   ============================================ */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow:
+      0 4px 20px rgba(212,175,55,0.25),
+      0 0 0 0 rgba(212,175,55,0.1);
+  }
+  50% {
+    box-shadow:
+      0 6px 35px rgba(212,175,55,0.45),
+      0 0 0 6px rgba(212,175,55,0.05);
+  }
+}
+
+/* ============================================
+   FLOAT KEYFRAME
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+
+/* ============================================
+   GOLD LUXURY BORDER HIGHLIGHT
+   ============================================ */
+.gold-border-glow {
+  border: 1px solid rgba(212,175,55,0.3);
+  box-shadow:
+    0 0 15px rgba(212,175,55,0.08),
+    inset 0 1px 0 rgba(212,175,55,0.12),
+    inset 0 -1px 0 rgba(0,0,0,0.5);
+}
+
+/* ============================================
+   SECTION BACKGROUND VARIANTS
+   ============================================ */
+.bg-section-alt {
+  background: rgba(212,175,55,0.02);
+  border-top: 1px solid rgba(212,175,55,0.06);
+  border-bottom: 1px solid rgba(212,175,55,0.06);
+}
